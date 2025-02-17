@@ -29,7 +29,7 @@ android {
         namespace 'no.sourcerer.flutter_notie_clear'
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -46,7 +46,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 31
+        minSdkVersion 29
     }
 
     dependencies {

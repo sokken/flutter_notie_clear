@@ -1,6 +1,6 @@
 # flutter_notie_clear
 
-Clears all notifications and badge thingies for an app. Only for android atm, IOS coming
+Clears all notifications and badge thingies for an app. Only for android atm, IOS coming ( soonTM )
 
 ## Getting Started
 
@@ -9,5 +9,5 @@ Removes all notifications and badges for the app
 
 For testing only:
 `FlutterNotieClear.createTestNotie()` 
-Will all a notification for the app
+Clear all a notification for the app
 
