@@ -15,77 +15,83 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
 /** FlutterNotieClearPlugin */
-class FlutterNotieClearPlugin: FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
-  private lateinit var channel : MethodChannel
-  private lateinit var context : Context
+class FlutterNotieClearPlugin :
+    FlutterPlugin,
+    MethodCallHandler {
+    // The MethodChannel that will the communication between Flutter and native Android
+    //
+    // This local reference serves to register the plugin with the Flutter Engine and unregister it
+    // when the Flutter Engine is detached from the Activity
+    private lateinit var channel: MethodChannel
 
-  override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_notie_clear")
-    channel.setMethodCallHandler(this)
-    context = flutterPluginBinding.getApplicationContext()
+    private lateinit var context : Context
 
-    // create a notification channel for test notification
-    val notie_m = context.getSystemService( Context.NOTIFICATION_SERVICE ) as NotificationManager
-    val channel = NotificationChannel(
-      "test",
-      "test_channel",
-      NotificationManager.IMPORTANCE_DEFAULT
-    )
-    notie_m.createNotificationChannel( channel )
-  }
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_notie_clear")
+        channel.setMethodCallHandler(this)
+        context = flutterPluginBinding.getApplicationContext()
 
-  override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-      return
+        // create a notification channel for test notification
+        val notie_m = context.getSystemService( Context.NOTIFICATION_SERVICE ) as NotificationManager
+        val channel = NotificationChannel(
+          "test",
+          "test_channel",
+          NotificationManager.IMPORTANCE_DEFAULT
+        )
+        notie_m.createNotificationChannel( channel )
     }
 
-    if ( call.method == "clear_all" ) {
-      val notie_m = context.getSystemService( Context.NOTIFICATION_SERVICE ) as NotificationManager
-      notie_m.cancelAll()
-      result.success( "" )
-      return
-    }
+    override fun onMethodCall(
+        call: MethodCall,
+        result: Result
+    ) {
+        if (call.method == "getPlatformVersion") {
+        result.success("Android ${android.os.Build.VERSION.RELEASE}")
+        return
+        }
 
-    if ( call.method == "create_test_notie" ) {
-      val args : ArrayList<String> = call.arguments<ArrayList<String>>() ?: arrayListOf( "asd", "qwe" )
-      val t : String = args[ 0 ]
-      val b : String = args[ 1 ]
+        if ( call.method == "clear_all" ) {
+          val notie_m = context.getSystemService( Context.NOTIFICATION_SERVICE ) as NotificationManager
+          notie_m.cancelAll()
+          result.success( "" )
+          return
+        }
 
-      val intent = Intent( context, FlutterNotieClearPlugin::class.java ).apply {
-        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-      }
-      val pendingIntent : PendingIntent = PendingIntent.getActivity(
-        context,
-        0,
-        intent,
-        PendingIntent.FLAG_IMMUTABLE
-      )
+        if ( call.method == "create_test_notie" ) {
+          val args : ArrayList<String> = call.arguments<ArrayList<String>>() ?: arrayListOf( "asd", "qwe" )
+          val t : String = args[ 0 ]
+          val b : String = args[ 1 ]
 
-      val builder = NotificationCompat.Builder( context, "test" )
-        .setSmallIcon( R.drawable.ic_stat_name )
-        .setContentTitle( t )
-        .setContentText( b )
-        .setPriority( NotificationCompat.PRIORITY_DEFAULT )
-        .setContentIntent( pendingIntent )
+          val intent = Intent( context, FlutterNotieClearPlugin::class.java ).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+          }
+          val pendingIntent : PendingIntent = PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+          )
 
-      with( NotificationManagerCompat.from( context )) {
-        notify( 4, builder.build())
-      }
+          val builder = NotificationCompat.Builder( context, "test" )
+            .setSmallIcon( R.drawable.ic_stat_name )
+            .setContentTitle( t )
+            .setContentText( b )
+            .setPriority( NotificationCompat.PRIORITY_DEFAULT )
+            .setContentIntent( pendingIntent )
 
-      result.success( "" )
-      return
-    }
+          with( NotificationManagerCompat.from( context )) {
+            notify( 4, builder.build())
+          }
+
+          result.success( "" )
+          return
+        }
 
     result.notImplemented()
 
-  }
+    }
 
-  override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
-  }
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        channel.setMethodCallHandler(null)
+    }
 }

@@ -1,13 +1,14 @@
 name        : flutter_notie_clear
-description : Clear notifications and badges for the app
-version     : 0.1.2
+description : "Clear notifications and badges for the app"
+version     : 1.0.0
 homepage    : https://github.com/sokken/flutter_notie_clear
 
 environment:
-  sdk: '>=3.2.2 <4.0.0'
+  sdk: ^3.9.2
   flutter: '>=3.3.0'
 
 dependencies:
+  build_runner: ^2.9.0
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
@@ -15,7 +16,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -37,8 +38,6 @@ flutter:
       android:
         package: no.sourcerer.flutter_notie_clear
         pluginClass: FlutterNotieClearPlugin
-      ios:
-        pluginClass: FlutterNotieClearPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
@@ -46,10 +45,10 @@ flutter:
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
-  # https://flutter.dev/assets-and-images/#from-packages
+  # https://flutter.dev/to/asset-from-package
   #
   # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
+  # https://flutter.dev/to/resolution-aware-images
 
   # To add custom fonts to your plugin package, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
@@ -69,4 +68,4 @@ flutter:
   #         weight: 700
   #
   # For details regarding fonts in packages, see
-  # https://flutter.dev/custom-fonts/#from-packages
+  # https://flutter.dev/to/font-from-package

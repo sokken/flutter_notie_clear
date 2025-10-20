@@ -1,3 +1,7 @@
+## 1.0.0
+
+Project API upgrade to android SDK 36
+
 ## 0.1.2
 
 Expanded API level limits

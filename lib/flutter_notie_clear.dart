@@ -1,7 +1,5 @@
 
-import 'package:flutter_notie_clear/flutter_notie_clear_method_channel.dart';
-
-import 'flutter_notie_clear_platform_interface.dart';
+import 'flutter_notie_clear_method_channel.dart';
 
 class FlutterNotieClear {
   Future<String?> getPlatformVersion() {
@@ -19,4 +17,5 @@ class FlutterNotieClear {
     const String body = 'FNC_testBody';
     await MethodChannelFlutterNotieClear().createTestNotie( title, body );
   }
+
 }
