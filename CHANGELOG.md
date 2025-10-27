@@ -1,3 +1,7 @@
+## 1.0.1
+
+dependency wrangling
+
 ## 1.0.0
 
 Project API upgrade to android SDK 36
