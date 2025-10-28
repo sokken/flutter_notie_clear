@@ -1,3 +1,7 @@
+## 1.0.2
+
+dependency wrangling
+
 ## 1.0.1
 
 dependency wrangling

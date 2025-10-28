@@ -17,7 +17,7 @@ buildscript {
     }
 }
 
-rootProject.allprojects {
+allprojects {
     repositories {
         google()
         mavenCentral()
@@ -30,7 +30,7 @@ apply plugin: "kotlin-android"
 android {
     namespace "no.sourcerer.flutter_notie_clear"
 
-    compileSdkVersion 36
+    compileSdk 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -47,18 +47,14 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 28
-    }
-
-    lintOptions {
-        disable 'InvalidPackage'
+        minSdk 28
     }
 
     dependencies {
-        implementation "androidx.core:core-ktx:1.17.0"
-        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        //implementation "androidx.core:core-ktx:1.17.0"
+        //implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
         testImplementation "org.jetbrains.kotlin:kotlin-test"
-        testImplementation "org.mockito:mockito-core:5.20.0"
+        testImplementation "org.mockito:mockito-core:5.0.0"
     }
 
     testOptions {
