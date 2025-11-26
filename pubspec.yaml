@@ -17,7 +17,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  #test: ^1.25.0
+  test: ^1.28.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -37,6 +38,9 @@ flutter:
   plugin:
     platforms:
       android:
+        package: no.sourcerer.flutter_notie_clear
+        pluginClass: FlutterNotieClearPlugin
+      ios:
         package: no.sourcerer.flutter_notie_clear
         pluginClass: FlutterNotieClearPlugin
 
