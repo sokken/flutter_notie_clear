@@ -1,3 +1,7 @@
+## 1.1.2
+
+IOS added
+
 ## 1.0.2
 
 dependency wrangling
